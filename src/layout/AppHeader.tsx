@@ -1,0 +1,44 @@
+import { Layout, Menu } from "antd";
+import { Link } from "react-router-dom";
+const { Header } = Layout;
+
+function AppHeader() {
+  return (
+    <Header
+      style={{
+        backgroundColor: "#001529",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "0 20px",
+      }}
+    >
+      <div
+        className="logo"
+        style={{ color: "white", fontSize: "20px", fontWeight: "bold" }}
+      >
+        JobTalk
+      </div>
+
+      <Menu
+        theme="dark"
+        mode="horizontal"
+        style={{ flex: 1, justifyContent: "center" }}
+      >
+        <Menu.Item key="1">
+          <Link to="/">홈</Link>
+        </Menu.Item>
+        <Menu.Item key="2">
+          <Link to="/postlist">게시판</Link>
+        </Menu.Item>
+        <Menu.Item key="3">
+          <Link to="/postlist">기업리뷰</Link>
+        </Menu.Item>
+      </Menu>
+
+      <div style={{ color: "white" }}>내정보</div>
+    </Header>
+  );
+}
+
+export default AppHeader;
