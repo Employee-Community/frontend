@@ -1,5 +1,7 @@
+import SignupTemplate from "../domain/member/components/SignUpTemplate";
+
 function SignUp() {
-  return <div>SignUp</div>;
+  return <SignupTemplate />;
 }
 
 export default SignUp;
