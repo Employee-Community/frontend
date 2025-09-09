@@ -1,5 +1,7 @@
+import LoginTemplate from "../domain/member/components/LogInTemplate";
+
 function LogIn() {
-  return <div>LogIn</div>;
+  return <LoginTemplate />;
 }
 
 export default LogIn;
