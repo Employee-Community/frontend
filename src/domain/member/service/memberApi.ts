@@ -15,6 +15,11 @@ interface LogInRequest {
   password: string;
 }
 
+interface ChangeMembershipRequest {
+  role: string;
+  impUid: string;
+}
+
 interface ApiResponse {
   success: boolean;
   message: string;
@@ -26,5 +31,13 @@ export const memberApi = {
   signup: (data: SignupRequest) =>
     api.post<ApiResponse>("/member/register", data),
 
-  login: (data: LogInRequest) => api.post<ApiResponse>("/member/logIn", data),
+  login: (data: LogInRequest) =>
+    api.post<ApiResponse>("/member/logIn", data, {
+      withCredentials: true,
+    }),
+
+  changeMemberShip: (data: ChangeMembershipRequest) =>
+    api.patch<ApiResponse>("/member/role", data),
+
+  findMember: () => api.get<ApiResponse>("/member/1"),
 };

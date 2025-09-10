@@ -1,3 +1,4 @@
+import { memberApi } from "../domain/member/service/MemberApi";
 import { paymentApi } from "../domain/payment/service/paymentApi";
 
 declare global {
@@ -33,20 +34,33 @@ function Home() {
     IMP.request_pay(data, async function (response: PaymentResponse) {
       if (response.success) {
         // 결제 성공 시 백엔드로 검증 요청
-        const res = await paymentApi.verifyPayment({
+        await paymentApi.verifyPayment({
           impUid: response.imp_uid,
           merchantUid: response.merchant_uid,
         });
-        console.log("결제 검증 성공:", res.data);
+        console.log("결제 검증 성공:");
       } else {
         alert(`결제 실패: ${response.error_msg}`);
       }
+
+      await memberApi.changeMemberShip({
+        impUid: response.imp_uid,
+        role: "PREMIUM",
+      });
+
+      console.log("멤버쉽 변경 성공");
     });
+  };
+
+  const serachMember = async () => {
+    const res = await memberApi.findMember();
+    console.log(res);
   };
 
   return (
     <div>
       <button onClick={handlePayment}>결제 클릭</button>
+      <button onClick={serachMember}>회원 조회</button>
     </div>
   );
 }
