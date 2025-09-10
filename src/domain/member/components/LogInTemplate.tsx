@@ -65,6 +65,10 @@ function LoginTemplate() {
           <Button type="primary" block loading={loading} onClick={handleLogin}>
             로그인
           </Button>
+
+          <Button type="default" block onClick={() => navigate("/signup")}>
+            회원가입
+          </Button>
         </Space>
       </Card>
     </div>

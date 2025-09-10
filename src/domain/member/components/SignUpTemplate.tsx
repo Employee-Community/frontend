@@ -93,6 +93,10 @@ function SignupTemplate() {
           <Button type="primary" block loading={loading} onClick={handleSignup}>
             회원가입
           </Button>
+
+          <Button type="default" block onClick={() => navigate("/login")}>
+            로그인
+          </Button>
         </Space>
       </Card>
     </div>
