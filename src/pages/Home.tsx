@@ -53,7 +53,7 @@ function Home() {
   };
 
   const serachMember = async () => {
-    const res = await memberApi.findMember();
+    const res = await memberApi.getMyInfo();
     console.log(res);
   };
 
