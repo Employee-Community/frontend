@@ -8,27 +8,31 @@ import { Layout } from "antd";
 import SignUp from "./pages/SignUp";
 import PostList from "./pages/PostList";
 import PostDetail from "./pages/PostDetail";
+import { RecoilRoot } from "recoil";
+
 import "./App.css";
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
-      <Layout style={{ minHeight: "100vh", flexDirection: "column" }}>
-        <AppHeader />
+    <RecoilRoot>
+      <BrowserRouter>
+        <Layout style={{ minHeight: "100vh", flexDirection: "column" }}>
+          <AppHeader />
 
-        <AppContent>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<LogIn />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/postlist" element={<PostList />} />
-            <Route path="/postdetail" element={<PostDetail />} />
-          </Routes>
-        </AppContent>
+          <AppContent>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<LogIn />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/postlist" element={<PostList />} />
+              <Route path="/postdetail" element={<PostDetail />} />
+            </Routes>
+          </AppContent>
 
-        <AppFooter />
-      </Layout>
-    </BrowserRouter>
+          <AppFooter />
+        </Layout>
+      </BrowserRouter>
+    </RecoilRoot>
   );
 };
 
