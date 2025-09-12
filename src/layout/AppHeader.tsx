@@ -1,8 +1,14 @@
 import { Layout, Menu } from "antd";
 import { Link } from "react-router-dom";
 const { Header } = Layout;
+import { useRecoilValue } from "recoil";
+import { memberAtom } from "../atoms/memberAtom";
+import useRemainLogin from "../common/hooks/useRemainLogin";
 
 function AppHeader() {
+  const member = useRecoilValue(memberAtom);
+  useRemainLogin();
+
   return (
     <Header
       style={{
@@ -36,7 +42,20 @@ function AppHeader() {
         </Menu.Item>
       </Menu>
 
-      <div style={{ color: "white" }}>내정보</div>
+      <div style={{ color: "white", display: "flex", gap: "16px" }}>
+        {member ? (
+          <span>{member.nickname}</span>
+        ) : (
+          <>
+            <Link to="/login" style={{ color: "white" }}>
+              로그인
+            </Link>
+            <Link to="/signup" style={{ color: "white" }}>
+              회원가입
+            </Link>
+          </>
+        )}
+      </div>
     </Header>
   );
 }

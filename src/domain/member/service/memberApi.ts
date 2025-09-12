@@ -1,4 +1,6 @@
 import api from "../../../common/config/axios";
+import type { IApiResponse } from "../../../common/types/response/commonResponse";
+import type { IMember } from "../../../common/types/response/memberResponse";
 
 interface SignupRequest {
   id: string;
@@ -20,24 +22,20 @@ interface ChangeMembershipRequest {
   impUid: string;
 }
 
-interface ApiResponse {
-  success: boolean;
-  message: string;
-  data: any;
-  timestamp: string;
-}
-
 export const memberApi = {
   signup: (data: SignupRequest) =>
-    api.post<ApiResponse>("/member/register", data),
+    api.post<IApiResponse<void>>("/member/register", data),
 
   login: (data: LogInRequest) =>
-    api.post<ApiResponse>("/member/logIn", data, {
+    api.post<IApiResponse<IMember>>("/member/logIn", data, {
       withCredentials: true,
     }),
 
   changeMemberShip: (data: ChangeMembershipRequest) =>
-    api.patch<ApiResponse>("/member/role", data),
+    api.patch<IApiResponse<void>>("/member/role", data),
 
-  findMember: () => api.get<ApiResponse>("/member/1"),
+  getMyInfo: () =>
+    api.get<IApiResponse<IMember>>("/member", {
+      withCredentials: true,
+    }),
 };
