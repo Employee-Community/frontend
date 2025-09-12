@@ -1,14 +1,17 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import AppHeader from "./layout/AppHeader";
-import AppFooter from "./layout/AppFooter";
-import LogIn from "./pages/LogIn";
-import Home from "./pages/Home";
-import AppContent from "./layout/AppContent";
 import { Layout } from "antd";
-import SignUp from "./pages/SignUp";
-import PostList from "./pages/PostList";
-import PostDetail from "./pages/PostDetail";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { RecoilRoot } from "recoil";
+import "./App.css";
+import AppContent from "./layout/AppContent";
+import AppFooter from "./layout/AppFooter";
+import AppHeader from "./layout/AppHeader";
+import Home from "./pages/Home";
+import LogIn from "./pages/LogIn";
+import PostCreate from "./pages/PostCreate";
+import PostDetail from "./pages/PostDetail";
+import PostList from "./pages/PostList";
+import PostMain from "./pages/PostMain";
+import SignUp from "./pages/SignUp";
 
 import "./App.css";
 
@@ -24,11 +27,12 @@ const App: React.FC = () => {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<LogIn />} />
               <Route path="/signup" element={<SignUp />} />
-              <Route path="/postlist" element={<PostList />} />
-              <Route path="/postdetail" element={<PostDetail />} />
+              <Route path="/posts" element={<PostMain />} />
+              <Route path="/posts/category/:categoryIdx" element={<PostList />} />
+              <Route path="/posts/:postIdx" element={<PostDetail />} />
+              <Route path="/posts/create" element={<PostCreate />} />
             </Routes>
           </AppContent>
-
           <AppFooter />
         </Layout>
       </BrowserRouter>
