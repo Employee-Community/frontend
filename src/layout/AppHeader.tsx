@@ -35,7 +35,7 @@ function AppHeader() {
           <Link to="/">홈</Link>
         </Menu.Item>
         <Menu.Item key="2">
-          <Link to="/postlist">게시판</Link>
+          <Link to="/posts">게시판</Link>
         </Menu.Item>
         <Menu.Item key="3">
           <Link to="/postlist">기업리뷰</Link>

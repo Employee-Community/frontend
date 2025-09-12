@@ -1,5 +1,7 @@
+import PostDetailTemplate from "../domain/post/components/PostDetailTemplate";
+
 function PostDetail() {
-  return <div>PostDetail</div>;
+    return <PostDetailTemplate />
 }
 
 export default PostDetail;
